@@ -2,12 +2,17 @@ import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import logo from "@/assets/algoknights-logo.png";
 import AnimatedBackground from "@/components/AnimatedBackground";
+import { useParallax } from "@/hooks/useParallax";
 
 const Hero = () => {
   const [displayText, setDisplayText] = useState("");
   const [currentLine, setCurrentLine] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
+  
+  const { ref: parallaxRef1, offset: offset1 } = useParallax({ speed: 0.3 });
+  const { ref: parallaxRef2, offset: offset2 } = useParallax({ speed: 0.5, direction: "down" });
+  const { ref: contentRef, offset: contentOffset } = useParallax({ speed: 0.15 });
 
   const lines = [
     "> Welcome to AlgoKnights Portfolio",
@@ -64,11 +69,26 @@ const Hero = () => {
       {/* Animated Background */}
       <AnimatedBackground />
       
-      {/* Gradient Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }}></div>
+      {/* Gradient Orbs with Parallax */}
+      <div 
+        ref={parallaxRef1}
+        className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse"
+        style={{ transform: `translateY(${offset1}px)` }}
+      ></div>
+      <div 
+        ref={parallaxRef2}
+        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse" 
+        style={{ 
+          animationDelay: "1s",
+          transform: `translateY(${offset2}px)`
+        }}
+      ></div>
       
-      <div className="text-center relative z-10">
+      <div 
+        ref={contentRef}
+        className="text-center relative z-10"
+        style={{ transform: `translateY(${contentOffset}px)` }}
+      >
         <div className="animate-fade-in">
           <img
             src={logo}

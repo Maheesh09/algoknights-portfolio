@@ -1,9 +1,11 @@
 import { Code2, Shield, Trophy } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useParallax } from "@/hooks/useParallax";
 
 const About = () => {
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
   const { ref: textRef, isVisible: textVisible } = useScrollAnimation();
+  const { ref: parallaxRef, offset } = useParallax({ speed: 0.2 });
   const highlights = [
     {
       icon: Code2,
@@ -23,8 +25,13 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 px-4 md:px-8">
-      <div className="max-w-6xl mx-auto">
+    <section id="about" className="py-20 px-4 md:px-8 relative overflow-hidden">
+      <div 
+        ref={parallaxRef}
+        className="absolute top-0 right-0 w-96 h-96 bg-primary/3 rounded-full blur-3xl"
+        style={{ transform: `translateY(${offset}px)` }}
+      ></div>
+      <div className="max-w-6xl mx-auto relative z-10">
         <div
           ref={headerRef}
           className={`transition-all duration-700 ${
