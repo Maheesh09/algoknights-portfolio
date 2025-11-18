@@ -59,7 +59,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center relative px-4 overflow-hidden">
+    <section className="min-h-screen flex flex-col items-center justify-center relative px-4 overflow-hidden pt-16">
       <div className="text-center">
         <div className="animate-fade-in">
           <img
