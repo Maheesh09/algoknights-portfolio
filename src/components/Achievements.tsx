@@ -1,7 +1,6 @@
 import { Award, Trophy, Medal, Target } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useParallax } from "@/hooks/useParallax";
-import { useMouseParallax } from "@/hooks/useMouseParallax";
 
 const Achievements = () => {
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
@@ -57,24 +56,14 @@ const Achievements = () => {
           {achievements.map((achievement, index) => {
             const Icon = achievement.icon;
             const { ref, isVisible } = useScrollAnimation();
-            const [mouseRef, mouseOffset] = useMouseParallax(10);
-            
-            const setRefs = (node: HTMLDivElement | null) => {
-              (ref as any).current = node;
-              (mouseRef as any).current = node;
-            };
-            
             return (
               <div
                 key={index}
-                ref={setRefs}
+                ref={ref}
                 className={`bg-card border border-border rounded-lg p-8 hover:border-primary transition-all duration-500 group cursor-pointer hover:scale-105 hover:-translate-y-2 card-glow-hover relative overflow-hidden ${
                   isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
                 }`}
-                style={{ 
-                  transitionDelay: `${index * 100}ms`,
-                  transform: `translate(${mouseOffset.x}px, ${mouseOffset.y}px)`
-                }}
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className="absolute top-0 left-0 w-24 h-24 bg-primary/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                 <div className="relative z-10">

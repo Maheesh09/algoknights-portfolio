@@ -3,7 +3,6 @@ import { ChevronDown } from "lucide-react";
 import logo from "@/assets/algoknights-logo.png";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import { useParallax } from "@/hooks/useParallax";
-import { useGlobalMouseParallax } from "@/hooks/useMouseParallax";
 
 const Hero = () => {
   const [displayText, setDisplayText] = useState("");
@@ -14,7 +13,6 @@ const Hero = () => {
   const { ref: parallaxRef1, offset: offset1 } = useParallax({ speed: 0.3 });
   const { ref: parallaxRef2, offset: offset2 } = useParallax({ speed: 0.5, direction: "down" });
   const { ref: contentRef, offset: contentOffset } = useParallax({ speed: 0.15 });
-  const mouseOffset = useGlobalMouseParallax(30);
 
   const lines = [
     "> Welcome to AlgoKnights Portfolio",
@@ -74,15 +72,15 @@ const Hero = () => {
       {/* Gradient Orbs with Parallax */}
       <div 
         ref={parallaxRef1}
-        className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse transition-transform duration-300 ease-out"
-        style={{ transform: `translate(${mouseOffset.x}px, ${offset1 + mouseOffset.y}px)` }}
+        className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse"
+        style={{ transform: `translateY(${offset1}px)` }}
       ></div>
       <div 
         ref={parallaxRef2}
-        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse transition-transform duration-300 ease-out" 
+        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse" 
         style={{ 
           animationDelay: "1s",
-          transform: `translate(${-mouseOffset.x}px, ${offset2 + mouseOffset.y}px)`
+          transform: `translateY(${offset2}px)`
         }}
       ></div>
       
@@ -91,10 +89,7 @@ const Hero = () => {
         className="text-center relative z-10"
         style={{ transform: `translateY(${contentOffset}px)` }}
       >
-        <div 
-          className="animate-fade-in transition-transform duration-300 ease-out"
-          style={{ transform: `translate(${mouseOffset.x * 0.5}px, ${mouseOffset.y * 0.5}px)` }}
-        >
+        <div className="animate-fade-in">
           <img
             src={logo}
             alt="AlgoKnights Logo"

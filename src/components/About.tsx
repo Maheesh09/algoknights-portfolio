@@ -1,7 +1,6 @@
 import { Code2, Shield, Trophy } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useParallax } from "@/hooks/useParallax";
-import { useMouseParallax } from "@/hooks/useMouseParallax";
 
 const About = () => {
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
@@ -60,24 +59,14 @@ const About = () => {
           {highlights.map((item, index) => {
             const Icon = item.icon;
             const { ref, isVisible } = useScrollAnimation();
-            const [mouseRef, mouseOffset] = useMouseParallax(15);
-            
-            const setRefs = (node: HTMLDivElement | null) => {
-              (ref as any).current = node;
-              (mouseRef as any).current = node;
-            };
-            
             return (
               <div
                 key={index}
-                ref={setRefs}
+                ref={ref}
                 className={`bg-card border border-border rounded-lg p-8 hover:border-primary transition-all duration-500 group cursor-pointer hover:scale-105 hover:-translate-y-2 card-glow-hover ${
                   isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
                 }`}
-                style={{ 
-                  transitionDelay: `${index * 150}ms`,
-                  transform: `translate(${mouseOffset.x}px, ${mouseOffset.y}px)`
-                }}
+                style={{ transitionDelay: `${index * 150}ms` }}
               >
                 <div className="relative">
                   <Icon className="w-12 h-12 mb-4 group-hover:scale-125 group-hover:rotate-6 transition-all duration-500 text-primary" />
