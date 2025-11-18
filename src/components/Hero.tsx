@@ -8,7 +8,6 @@ const Hero = () => {
   const [displayText, setDisplayText] = useState("");
   const [currentLine, setCurrentLine] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
-  const [isMobile, setIsMobile] = useState(false);
   
   const { ref: parallaxRef1, offset: offset1 } = useParallax({ speed: 0.3 });
   const { ref: parallaxRef2, offset: offset2 } = useParallax({ speed: 0.5, direction: "down" });
@@ -21,16 +20,7 @@ const Hero = () => {
   ];
 
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  useEffect(() => {
-    if (isMobile || currentLine >= lines.length) return;
+    if (currentLine >= lines.length) return;
 
     const currentText = lines[currentLine];
     let charIndex = 0;
@@ -51,7 +41,7 @@ const Hero = () => {
     }, 50);
 
     return () => clearInterval(typingInterval);
-  }, [currentLine, isMobile]);
+  }, [currentLine]);
 
   useEffect(() => {
     const cursorInterval = setInterval(() => {
@@ -101,33 +91,24 @@ const Hero = () => {
           AlgoKnights
         </h1>
 
-        {!isMobile && (
-          <div className="bg-card border border-border rounded-lg p-6 md:p-8 mb-8 max-w-2xl mx-auto font-mono text-left animate-fade-in" style={{ animationDelay: "400ms" }}>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-3 h-3 rounded-full bg-destructive"></div>
-              <div className="w-3 h-3 rounded-full bg-muted-foreground"></div>
-              <div className="w-3 h-3 rounded-full bg-primary"></div>
-            </div>
-            <div className="text-sm md:text-base text-foreground space-y-2">
-              {lines.slice(0, currentLine).map((line, i) => (
-                <div key={i}>{line}</div>
-              ))}
-              <div className="flex">
-                {displayText}
-                {showCursor && currentLine < lines.length && (
-                  <span className="inline-block w-2 h-5 bg-foreground ml-1"></span>
-                )}
-              </div>
+        <div className="bg-card border border-border rounded-lg p-4 md:p-6 lg:p-8 mb-8 max-w-2xl mx-auto font-mono text-left animate-fade-in" style={{ animationDelay: "400ms" }}>
+          <div className="flex items-center gap-1.5 md:gap-2 mb-3 md:mb-4">
+            <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-destructive"></div>
+            <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-muted-foreground"></div>
+            <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-primary"></div>
+          </div>
+          <div className="text-xs sm:text-sm md:text-base text-foreground space-y-1 md:space-y-2">
+            {lines.slice(0, currentLine).map((line, i) => (
+              <div key={i} className="break-words">{line}</div>
+            ))}
+            <div className="flex break-words">
+              {displayText}
+              {showCursor && currentLine < lines.length && (
+                <span className="inline-block w-1.5 h-4 md:w-2 md:h-5 bg-foreground ml-1"></span>
+              )}
             </div>
           </div>
-        )}
-
-        {isMobile && (
-          <div className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto space-y-2 animate-fade-in" style={{ animationDelay: "400ms" }}>
-            <p>Where strategy meets code.</p>
-            <p>Building the future, one algorithm at a time.</p>
-          </div>
-        )}
+        </div>
 
         <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: "600ms" }}>
           A team of passionate undergraduate developers pushing boundaries
