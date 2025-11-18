@@ -39,7 +39,7 @@ const Contact = () => {
           <img
             src={logo}
             alt="AlgoKnights Logo"
-            className="w-16 h-16 mx-auto mb-6 opacity-80"
+            className="w-16 h-16 mx-auto mb-6 opacity-80 hover:opacity-100 hover:scale-110 hover:rotate-6 transition-all duration-500 cursor-pointer"
           />
           <h2 className="text-4xl md:text-5xl font-bold mb-6">Get In Touch</h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-8"></div>
@@ -56,11 +56,12 @@ const Contact = () => {
               <a
                 key={index}
                 href={link.href}
-                className="group"
+                className="group relative"
                 aria-label={link.label}
               >
-                <div className="w-14 h-14 rounded-full border border-border flex items-center justify-center hover:border-primary hover:scale-110 transition-all duration-300">
-                  <Icon className="w-6 h-6 group-hover:text-primary transition-colors" />
+                <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative w-14 h-14 rounded-full border border-border flex items-center justify-center hover:border-primary hover:scale-125 hover:rotate-12 transition-all duration-500 card-glow-hover cursor-pointer bg-card">
+                  <Icon className="w-6 h-6 group-hover:text-primary group-hover:scale-110 transition-all duration-300" />
                 </div>
               </a>
             );
