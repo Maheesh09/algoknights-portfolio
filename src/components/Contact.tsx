@@ -1,7 +1,9 @@
 import { Github, Linkedin, Mail, Twitter } from "lucide-react";
 import logo from "@/assets/algoknights-logo.png";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Contact = () => {
+  const { ref: sectionRef, isVisible } = useScrollAnimation();
   const socialLinks = [
     {
       icon: Github,
@@ -28,7 +30,12 @@ const Contact = () => {
   return (
     <section id="contact" className="py-20 px-4 md:px-8 border-t border-border">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
+        <div
+          ref={sectionRef}
+          className={`text-center mb-12 transition-all duration-700 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+        >
           <img
             src={logo}
             alt="AlgoKnights Logo"

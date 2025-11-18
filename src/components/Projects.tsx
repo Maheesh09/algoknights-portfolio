@@ -1,7 +1,9 @@
 import { ExternalLink, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Projects = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
   const projects = [
     {
       title: "AI-Powered Code Analyzer",
@@ -32,17 +34,28 @@ const Projects = () => {
   return (
     <section id="projects" className="py-20 px-4 md:px-8 bg-secondary/30">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-6 text-center">Our Projects</h2>
-        <div className="w-20 h-1 bg-primary mx-auto mb-12"></div>
+        <div
+          ref={headerRef}
+          className={`transition-all duration-700 ${
+            headerVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+        >
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-center">Our Projects</h2>
+          <div className="w-20 h-1 bg-primary mx-auto mb-12"></div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className={`bg-card border border-border rounded-lg p-8 hover:border-primary transition-all duration-300 group ${
-                project.featured ? "md:col-span-1" : ""
-              }`}
-            >
+          {projects.map((project, index) => {
+            const { ref, isVisible } = useScrollAnimation();
+            return (
+              <div
+                key={index}
+                ref={ref}
+                className={`bg-card border border-border rounded-lg p-8 hover:border-primary transition-all duration-700 group ${
+                  project.featured ? "md:col-span-1" : ""
+                } ${isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-10 scale-95"}`}
+                style={{ transitionDelay: `${index * 100}ms` }}
+              >
               <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
                 {project.title}
               </h3>
@@ -70,7 +83,8 @@ const Projects = () => {
                 </Button>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
