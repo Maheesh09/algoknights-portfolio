@@ -2,39 +2,29 @@ import { ExternalLink, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useParallax } from "@/hooks/useParallax";
+import AnimatedBackground from "@/components/AnimatedBackground";
 
 const Projects = () => {
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
   const { ref: parallaxRef, offset } = useParallax({ speed: 0.25, direction: "down" });
   const projects = [
     {
-      title: "AI-Powered Code Analyzer",
-      description: "Machine learning tool for detecting code vulnerabilities and suggesting optimizations",
-      tags: ["Python", "TensorFlow", "React"],
+      title: "GradeMate - A automated grading system for exams",
+      description: "A system that automatically grades exams and provides feedback to students",
+      tags: ["Python", "FastAPI", "React", "Gemini","MYSQL"],
       featured: true,
     },
     {
-      title: "SecureVault",
-      description: "End-to-end encrypted file storage system with blockchain verification",
-      tags: ["Node.js", "Blockchain", "Cryptography"],
-      featured: true,
-    },
-    {
-      title: "AlgoVisualizer",
-      description: "Interactive platform for visualizing data structures and algorithms in real-time",
-      tags: ["TypeScript", "React", "D3.js"],
-      featured: false,
-    },
-    {
-      title: "DevOps Dashboard",
-      description: "Comprehensive monitoring and deployment automation tool for cloud infrastructure",
-      tags: ["Go", "Docker", "Kubernetes"],
+      title: "GlobalNest - A platform for migrants to adjust to the new environment",
+      description: "A platform for migrants to adjust to the new environment",
+      tags: ["React", "Spring Boot", "MYSQL"],
       featured: false,
     },
   ];
 
   return (
     <section id="projects" className="py-20 px-4 md:px-8 bg-secondary/30 relative overflow-hidden">
+      <AnimatedBackground />
       <div 
         ref={parallaxRef}
         className="absolute bottom-0 left-0 w-96 h-96 bg-primary/3 rounded-full blur-3xl"

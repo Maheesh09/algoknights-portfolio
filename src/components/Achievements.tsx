@@ -1,6 +1,7 @@
 import { Award, Trophy, Medal, Target } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useParallax } from "@/hooks/useParallax";
+import AnimatedBackground from "@/components/AnimatedBackground";
 
 const Achievements = () => {
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
@@ -34,6 +35,7 @@ const Achievements = () => {
 
   return (
     <section id="achievements" className="py-20 px-4 md:px-8 relative overflow-hidden">
+      <AnimatedBackground />
       <div 
         ref={parallaxRef}
         className="absolute top-1/2 right-0 w-96 h-96 bg-primary/3 rounded-full blur-3xl"
