@@ -2,6 +2,7 @@ import { ExternalLink, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useParallax } from "@/hooks/useParallax";
+import { useMouseParallax } from "@/hooks/useMouseParallax";
 
 const Projects = () => {
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
@@ -54,14 +55,24 @@ const Projects = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project, index) => {
             const { ref, isVisible } = useScrollAnimation();
+            const [mouseRef, mouseOffset] = useMouseParallax(12);
+            
+            const setRefs = (node: HTMLDivElement | null) => {
+              (ref as any).current = node;
+              (mouseRef as any).current = node;
+            };
+            
             return (
               <div
                 key={index}
-                ref={ref}
+                ref={setRefs}
                 className={`bg-card border border-border rounded-lg p-8 hover:border-primary transition-all duration-500 group cursor-pointer hover:scale-105 hover:-translate-y-3 card-glow-hover relative overflow-hidden ${
                   project.featured ? "md:col-span-1" : ""
                 } ${isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-10 scale-95"}`}
-                style={{ transitionDelay: `${index * 100}ms` }}
+                style={{ 
+                  transitionDelay: `${index * 100}ms`,
+                  transform: `translate(${mouseOffset.x}px, ${mouseOffset.y}px)`
+                }}
               >
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-0"></div>
               <div className="relative z-10">

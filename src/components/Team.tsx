@@ -1,6 +1,7 @@
 import { Github, Linkedin, Mail } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useParallax } from "@/hooks/useParallax";
+import { useMouseParallax } from "@/hooks/useMouseParallax";
 
 const Team = () => {
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
@@ -59,14 +60,24 @@ const Team = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {members.map((member, index) => {
             const { ref, isVisible } = useScrollAnimation();
+            const [mouseRef, mouseOffset] = useMouseParallax(12);
+            
+            const setRefs = (node: HTMLDivElement | null) => {
+              (ref as any).current = node;
+              (mouseRef as any).current = node;
+            };
+            
             return (
               <div
                 key={index}
-                ref={ref}
+                ref={setRefs}
                 className={`bg-card border border-border rounded-lg p-8 hover:border-primary transition-all duration-500 group cursor-pointer hover:scale-105 hover:-translate-y-3 card-glow-hover relative overflow-hidden ${
                   isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-10 scale-95"
                 }`}
-                style={{ transitionDelay: `${index * 80}ms` }}
+                style={{ 
+                  transitionDelay: `${index * 80}ms`,
+                  transform: `translate(${mouseOffset.x}px, ${mouseOffset.y}px)`
+                }}
               >
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
               <div className="relative z-10">
