@@ -56,14 +56,17 @@ const About = () => {
               <div
                 key={index}
                 ref={ref}
-                className={`bg-card border border-border rounded-lg p-8 hover:border-primary transition-all duration-700 group ${
+                className={`bg-card border border-border rounded-lg p-8 hover:border-primary transition-all duration-500 group cursor-pointer hover:scale-105 hover:-translate-y-2 card-glow-hover ${
                   isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
                 }`}
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
-                <Icon className="w-12 h-12 mb-4 group-hover:scale-110 transition-transform" />
-                <h3 className="text-2xl font-bold mb-3">{item.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{item.description}</p>
+                <div className="relative">
+                  <Icon className="w-12 h-12 mb-4 group-hover:scale-125 group-hover:rotate-6 transition-all duration-500 text-primary" />
+                  <div className="absolute inset-0 bg-primary/5 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
+                <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">{item.title}</h3>
+                <p className="text-muted-foreground leading-relaxed group-hover:text-foreground/80 transition-colors duration-300">{item.description}</p>
               </div>
             );
           })}

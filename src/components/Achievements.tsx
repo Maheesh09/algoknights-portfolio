@@ -53,15 +53,18 @@ const Achievements = () => {
               <div
                 key={index}
                 ref={ref}
-                className={`bg-card border border-border rounded-lg p-8 hover:border-primary transition-all duration-700 group ${
+                className={`bg-card border border-border rounded-lg p-8 hover:border-primary transition-all duration-500 group cursor-pointer hover:scale-105 hover:-translate-y-2 card-glow-hover relative overflow-hidden ${
                   isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <Icon className="w-10 h-10 mb-4 group-hover:scale-110 transition-transform" />
-                <h3 className="text-xl font-bold mb-2">{achievement.title}</h3>
-                <p className="text-primary font-mono text-sm mb-3">{achievement.event}</p>
-                <p className="text-muted-foreground leading-relaxed">{achievement.description}</p>
+                <div className="absolute top-0 left-0 w-24 h-24 bg-primary/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                <div className="relative z-10">
+                  <Icon className="w-10 h-10 mb-4 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 text-primary" />
+                  <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors duration-300">{achievement.title}</h3>
+                  <p className="text-primary font-mono text-sm mb-3 group-hover:scale-105 transition-transform duration-300 inline-block">{achievement.event}</p>
+                  <p className="text-muted-foreground leading-relaxed group-hover:text-foreground/80 transition-colors duration-300">{achievement.description}</p>
+                </div>
               </div>
             );
           })}

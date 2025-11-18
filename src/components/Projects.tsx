@@ -51,36 +51,39 @@ const Projects = () => {
               <div
                 key={index}
                 ref={ref}
-                className={`bg-card border border-border rounded-lg p-8 hover:border-primary transition-all duration-700 group ${
+                className={`bg-card border border-border rounded-lg p-8 hover:border-primary transition-all duration-500 group cursor-pointer hover:scale-105 hover:-translate-y-3 card-glow-hover relative overflow-hidden ${
                   project.featured ? "md:col-span-1" : ""
                 } ${isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-10 scale-95"}`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-              <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
-                {project.title}
-              </h3>
-              <p className="text-muted-foreground mb-6 leading-relaxed">{project.description}</p>
-              
-              <div className="flex flex-wrap gap-2 mb-6">
-                {project.tags.map((tag, i) => (
-                  <span
-                    key={i}
-                    className="px-3 py-1 bg-secondary border border-border rounded-full text-sm font-mono"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-0"></div>
+              <div className="relative z-10">
+                <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">
+                  {project.title}
+                </h3>
+                <p className="text-muted-foreground mb-6 leading-relaxed group-hover:text-foreground/80 transition-colors duration-300">{project.description}</p>
+                
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {project.tags.map((tag, i) => (
+                    <span
+                      key={i}
+                      className="px-3 py-1 bg-secondary border border-border rounded-full text-sm font-mono hover:bg-primary/10 hover:border-primary transition-all duration-300"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
 
-              <div className="flex gap-4">
-                <Button variant="outline" size="sm" className="group/btn">
-                  <Github className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />
-                  Code
-                </Button>
-                <Button variant="outline" size="sm" className="group/btn">
-                  <ExternalLink className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />
-                  Demo
-                </Button>
+                <div className="flex gap-4">
+                  <Button variant="outline" size="sm" className="group/btn hover:scale-110 transition-all duration-300">
+                    <Github className="w-4 h-4 mr-2 group-hover/btn:rotate-12 transition-transform duration-300" />
+                    Code
+                  </Button>
+                  <Button variant="outline" size="sm" className="group/btn hover:scale-110 transition-all duration-300">
+                    <ExternalLink className="w-4 h-4 mr-2 group-hover/btn:rotate-12 transition-transform duration-300" />
+                    Demo
+                  </Button>
+                </div>
               </div>
             </div>
             );
