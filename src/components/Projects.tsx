@@ -1,9 +1,11 @@
 import { ExternalLink, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useParallax } from "@/hooks/useParallax";
 
 const Projects = () => {
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
+  const { ref: parallaxRef, offset } = useParallax({ speed: 0.25, direction: "down" });
   const projects = [
     {
       title: "AI-Powered Code Analyzer",
@@ -32,8 +34,13 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 px-4 md:px-8 bg-secondary/30">
-      <div className="max-w-6xl mx-auto">
+    <section id="projects" className="py-20 px-4 md:px-8 bg-secondary/30 relative overflow-hidden">
+      <div 
+        ref={parallaxRef}
+        className="absolute bottom-0 left-0 w-96 h-96 bg-primary/3 rounded-full blur-3xl"
+        style={{ transform: `translateY(${offset}px)` }}
+      ></div>
+      <div className="max-w-6xl mx-auto relative z-10">
         <div
           ref={headerRef}
           className={`transition-all duration-700 ${
