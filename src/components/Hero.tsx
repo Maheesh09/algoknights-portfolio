@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import logo from "@/assets/algoknights-logo.png";
+import AnimatedBackground from "@/components/AnimatedBackground";
 
 const Hero = () => {
   const [displayText, setDisplayText] = useState("");
@@ -60,7 +61,14 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen flex flex-col items-center justify-center relative px-4 overflow-hidden pt-16">
-      <div className="text-center">
+      {/* Animated Background */}
+      <AnimatedBackground />
+      
+      {/* Gradient Orbs */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }}></div>
+      
+      <div className="text-center relative z-10">
         <div className="animate-fade-in">
           <img
             src={logo}
@@ -108,7 +116,7 @@ const Hero = () => {
 
       <button
         onClick={scrollToContent}
-        className="absolute bottom-8 animate-bounce hover:text-primary transition-colors opacity-0 animate-fade-in"
+        className="absolute bottom-8 animate-bounce hover:text-primary transition-colors opacity-0 animate-fade-in z-10"
         style={{ animationDelay: "800ms" }}
         aria-label="Scroll to content"
       >
