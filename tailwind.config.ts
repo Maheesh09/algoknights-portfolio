@@ -111,6 +111,22 @@ export default {
             transform: "translateY(0)",
           },
         },
+        "float": {
+          "0%, 100%": {
+            transform: "translateY(0px)",
+          },
+          "50%": {
+            transform: "translateY(-20px)",
+          },
+        },
+        "pulse-slow": {
+          "0%, 100%": {
+            opacity: "0.3",
+          },
+          "50%": {
+            opacity: "0.5",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -119,6 +135,8 @@ export default {
         "slide-up": "slide-up 0.6s ease-out",
         "typing": "typing 3.5s steps(40, end)",
         "blink": "blink 0.75s step-end infinite",
+        "float": "float 6s ease-in-out infinite",
+        "pulse-slow": "pulse-slow 4s ease-in-out infinite",
       },
     },
   },
