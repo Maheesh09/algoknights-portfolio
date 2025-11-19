@@ -61,6 +61,52 @@ async function generateIconWithBlackBackground(size, outputPath) {
   }
 }
 
+async function generateOgImage() {
+  try {
+    if (!existsSync(logoPath)) {
+      console.error(`Logo not found at ${logoPath}`);
+      return;
+    }
+
+    const width = 1200;
+    const height = 630;
+
+    const background = sharp({
+      create: {
+        width,
+        height,
+        channels: 4,
+        background: { r: 0, g: 0, b: 0, alpha: 1 }
+      }
+    }).png();
+
+    const logoSize = Math.round(height * 0.6);
+    const logoBuffer = await sharp(logoPath)
+      .resize(logoSize, logoSize, {
+        fit: 'contain',
+        background: { r: 0, g: 0, b: 0, alpha: 0 }
+      })
+      .toBuffer();
+
+    const top = Math.round((height - logoSize) / 2);
+    const left = Math.round((width - logoSize) / 2);
+
+    await background
+      .composite([
+        {
+          input: logoBuffer,
+          top,
+          left
+        }
+      ])
+      .toFile(join(publicDir, 'og-image.png'));
+
+    console.log(`✓ Generated ${join(publicDir, 'og-image.png')} (${width}x${height})`);
+  } catch (error) {
+    console.error('Error generating Open Graph image:', error.message);
+  }
+}
+
 async function generateIcons() {
   console.log('Generating icons with black backgrounds...\n');
 
@@ -73,6 +119,9 @@ async function generateIcons() {
 
   // Also create a version for apple-touch-icon (180x180)
   await generateIconWithBlackBackground(180, join(publicDir, 'apple-touch-icon.png'));
+
+  // Generate Open Graph / Twitter preview image
+  await generateOgImage();
 
   console.log('\n✓ All icons generated successfully!');
 }
