@@ -7,7 +7,7 @@ const Team = () => {
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
   const { ref: parallaxRef, offset } = useParallax({ speed: 0.2, direction: "down" });
   const members = [
-    { name: "Shageeshan Thamodharam", image: null, github: "#", linkedin: "#" },
+    { name: "Shageeshan Thamodharam", image: "/Shagee.jpg", github: "https://github.com/ShageeshanT", linkedin: "https://www.linkedin.com/in/shageeshan/" },
     { name: "Maheesha Pramuditha", image: "/Maheesha.jpg", github: "https://github.com/Maheesh09", linkedin: "https://www.linkedin.com/in/maheeshapramuditha/" },
     { name: "Shajeeve Balakrishnan", image: null, github: "#", linkedin: "#" },
     { name: "Rithish Kaanth", image: null, github: "#", linkedin: "#" },
