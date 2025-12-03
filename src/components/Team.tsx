@@ -13,7 +13,7 @@ const Team = () => {
     { name: "Rithish Kaanth", image: null, github: "#", linkedin: "#" },
     { name: "Gayuth Waidyarathne", image: null, github: "#", linkedin: "#" },
     { name: "Gunitha Rathnayake", image: null, github: "#", linkedin: "#" },
-    { name: "Member 7", image: null, github: "#", linkedin: "#" },
+    { name: "Virul Methdinu", image: "/Virul.jpeg" , github: "https://github.com/MrVirul", linkedin: "https://www.linkedin.com/in/virul-meemana-4597292a0/" },
     { name: "Member 8", image: null, github: "#", linkedin: "#" },
     { name: "Member 9", image: null, github: "#", linkedin: "#" },
     { name: "Member 10", image: null, github: "#", linkedin: "#" },
