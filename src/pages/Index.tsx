@@ -6,6 +6,7 @@ import Achievements from "@/components/Achievements";
 import Team from "@/components/Team";
 import Merchandise from "@/components/Merchandise";
 import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
@@ -18,6 +19,7 @@ const Index = () => {
       <Team />
       <Merchandise />
       <Contact />
+      <Footer />
     </div>
   );
 };

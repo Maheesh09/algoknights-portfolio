@@ -68,10 +68,10 @@ const Contact = () => {
           })}
         </div>
 
-        <div className="text-center text-sm text-muted-foreground border-t border-border pt-8">
+        {/* <div className="text-center text-sm text-muted-foreground border-t border-border pt-8">
           <p className="font-mono">© 2024 AlgoKnights. All rights reserved.</p>
           <p className="mt-2">Built with passion by the AlgoKnights team</p>
-        </div>
+        </div> */}
       </div>
     </section>
   );
