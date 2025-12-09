@@ -13,7 +13,7 @@ const Team = () => {
     { name: "Shajeeve Balakrishnan", image: "/Shajeeve.jpeg", github: "https://github.com/ShajeeveB", linkedin: "https://www.linkedin.com/in/shajeeve-balakrishnan-a43237249/" },
     { name: "Rithish Kaanth", image: "/Rithish.jpeg", github: "#", linkedin: "#" },
     { name: "Gayuth Waidyarathne", image: "/Gayuth.jpeg", github: "#", linkedin: "#" },
-    { name: "Gunitha Rathnayake", image: "/Gunitha.png", github: "#", linkedin: "https://www.linkedin.com/in/gunitha-rathnayake-4765a9321/" },
+    { name: "Gunitha Rathnayake", image: "/Gunitha.png", github: "https://github.com/GunithaR", linkedin: "https://www.linkedin.com/in/gunitha-rathnayake-4765a9321/" },
     { name: "Virul Methdinu", image: "https://github.com/MrVirul.png", github: "https://github.com/MrVirul", linkedin: "https://www.linkedin.com/in/virul-meemana-4597292a0/" },
     { name: "Achira Pathiraja", image: "/Achira.jpeg", github: "#", linkedin: "#" },
     { name: "Member 9", image: null, github: "#", linkedin: "#" },
