@@ -68,7 +68,7 @@ const Navbar = () => {
                   className="px-5 py-2 text-base font-semibold text-white/80 hover:text-white transition-colors relative group tracking-wide"
                 >
                   {item.label}
-                  <span className="absolute bottom-0 left-2 right-2 h-0.5 bg-indigo-500 scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
+                  <span className="absolute bottom-0 left-2 right-2 h-0.5 bg-white/80 group-hover:h500 scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
                 </button>
               ))}
             </div>
