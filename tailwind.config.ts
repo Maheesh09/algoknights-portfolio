@@ -2,7 +2,12 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -13,6 +18,12 @@ export default {
       },
     },
     extend: {
+      screens: {
+        // Custom breakpoint for very small screens (phones)
+        xs: "400px",
+        // Custom breakpoint for tall/normal screens (to control bottom element visibility)
+        tall: { raw: "(min-height: 700px)" },
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -94,11 +105,11 @@ export default {
             transform: "translateY(0)",
           },
         },
-        "typing": {
+        typing: {
           from: { width: "0" },
           to: { width: "100%" },
         },
-        "blink": {
+        blink: {
           "50%": { borderColor: "transparent" },
         },
         "slide-up": {
@@ -111,7 +122,7 @@ export default {
             transform: "translateY(0)",
           },
         },
-        "float": {
+        float: {
           "0%, 100%": {
             transform: "translateY(0px)",
           },
@@ -133,9 +144,9 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in": "fade-in 0.6s ease-out",
         "slide-up": "slide-up 0.6s ease-out",
-        "typing": "typing 3.5s steps(40, end)",
-        "blink": "blink 0.75s step-end infinite",
-        "float": "float 6s ease-in-out infinite",
+        typing: "typing 3.5s steps(40, end)",
+        blink: "blink 0.75s step-end infinite",
+        float: "float 6s ease-in-out infinite",
         "pulse-slow": "pulse-slow 4s ease-in-out infinite",
       },
     },
