@@ -8,7 +8,7 @@ const Hero = () => {
   const [displayText, setDisplayText] = useState("");
   const [currentLine, setCurrentLine] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
-  
+
   const { ref: parallaxRef1, offset: offset1 } = useParallax({ speed: 0.3 });
   const { ref: parallaxRef2, offset: offset2 } = useParallax({ speed: 0.5, direction: "down" });
   const { ref: contentRef, offset: contentOffset } = useParallax({ speed: 0.15 });
@@ -55,28 +55,28 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center relative px-4 overflow-hidden pt-16">
+    <section className="min-h-screen flex flex-col items-center justify-center relative px-2 overflow-hidden">
       {/* Animated Background */}
       <AnimatedBackground />
-      
+
       {/* Gradient Orbs with Parallax */}
-      <div 
+      <div
         ref={parallaxRef1}
         className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse"
         style={{ transform: `translateY(${offset1}px)` }}
       ></div>
-      <div 
+      <div
         ref={parallaxRef2}
-        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse" 
-        style={{ 
+        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse"
+        style={{
           animationDelay: "1s",
           transform: `translateY(${offset2}px)`
         }}
       ></div>
-      
-      <div 
+
+      <div
         ref={contentRef}
-        className="text-center relative z-10"
+        className="text-center relative z-10 mt-16"
         style={{ transform: `translateY(${contentOffset}px)` }}
       >
         <div className="animate-fade-in">
@@ -86,7 +86,7 @@ const Hero = () => {
             className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-8"
           />
         </div>
-        
+
         <h1 className="text-5xl md:text-7xl font-bold mb-8 tracking-tight animate-fade-in" style={{ animationDelay: "200ms" }}>
           AlgoKnights
         </h1>
