@@ -10,9 +10,9 @@ const Team = () => {
     const members = [
         { name: "Shageeshan Thamodharam", image: "https://github.com/ShageeshanT.png", github: "https://github.com/ShageeshanT", linkedin: "https://www.linkedin.com/in/shageeshan/" },
         { name: "Maheesha Pramuditha", image: "https://github.com/Maheesh09.png", github: "https://github.com/Maheesh09", linkedin: "https://www.linkedin.com/in/maheeshapramuditha/" },
-        { name: "Shajeeve Balakrishnan", image: "Shajeeve.jpeg", github: "https://github.com/ShajeeveB", linkedin: "http://www.linkedin.com/in/shajeeve-balakrishnan-your-perfect-techie" },
+        { name: "Shajeeve Balakrishnan", image: "Shajeeve.jpeg", github: "https://github.com/Shajeeve567", linkedin: "http://www.linkedin.com/in/shajeeve-balakrishnan-your-perfect-techie" },
         { name: "Rithish Kaanth", image: "/Rithish.jpeg", github: "#", linkedin: "#" },
-        { name: "Gayuth Waidyarathne", image: "https://github.com/Gayuth-W.png", github: "https://github.com/Gayuth-W", linkedin: "#" },
+        { name: "Gayuth Waidyarathne", image: "https://github.com/Gayuth-W.png", github: "https://github.com/Gayuth-W", linkedin: "www.linkedin.com/in/gayuth-waidyaratne" },
         { name: "Gunitha Rathnayake", image: "/Gunitha.jpeg", github: "https://github.com/GunithaR", linkedin: "https://www.linkedin.com/in/gunitha-rathnayake-4765a9321/" },
         { name: "Virul Methdinu", image: "https://github.com/MrVirul.png", github: "https://github.com/MrVirul", linkedin: "https://www.linkedin.com/in/virul-meemana-4597292a0/" },
         { name: "Achira Pathiraja", image: "https://github.com/AchiraRP.png", github: "https://github.com/AchiraRP", linkedin: "https://www.linkedin.com/in/achira-ravindu-936a4b225/" },
