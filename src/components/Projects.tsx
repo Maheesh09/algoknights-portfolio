@@ -8,18 +8,56 @@ const Projects = () => {
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
   const { ref: parallaxRef, offset } = useParallax({ speed: 0.25, direction: "down" });
   const projects = [
-    {
-      title: "GradeMate - A automated grading system for exams",
-      description: "A system that automatically grades exams and provides feedback to students",
-      tags: ["Python", "FastAPI", "React", "Gemini","MYSQL"],
-      featured: true,
-    },
-    {
-      title: "GlobalNest - A platform for migrants to adjust to the new environment",
-      description: "A platform for migrants to adjust to the new environment",
-      tags: ["React", "Spring Boot", "MYSQL"],
-      featured: false,
-    },
+      {
+          title: "VibeCart – Smart AI-powered shopping experience",
+          description: "An intelligent shopping system that recommends products based on user preferences and browsing patterns.",
+          tags: ["Next.js", "Node.js", "MongoDB", "AI APIs"],
+          featured: true,
+          links: [
+              { type: "Code", url: "#" },
+              { type: "Demo", url: "#" },
+          ],
+      },
+      {
+          title: "DriveSense – Smart driving safety & behavior monitoring system",
+          description: "A real-time driving assistant that detects risky behavior, alerts drivers, and encourages safer driving habits.",
+          tags: ["Python", "OpenCV", "IoT Sensors", "Flask"],
+          featured: true,
+          links: [
+              { type: "Code", url: "#" },
+              { type: "Demo", url: "#" },
+          ],
+      },
+      {
+          title: "AlgoKnights Sessions – CP & Tech education for juniors",
+          description: "Weekly sessions teaching algorithms, Python, Git, and hackathon skills to university juniors.",
+          tags: ["Python", "Git", "C++", "Slides"],
+          featured: false,
+          links: [
+              { type: "Materials", url: "#" },
+              { type: "Showcase", url: "#" },
+          ],
+      },
+      {
+          title: "Competitive Programming Track – Practice & contest routines",
+          description: "A structured program of weekly problems and mock contests to improve speed and accuracy.",
+          tags: ["C++", "Python", "Codeforces", "LeetCode"],
+          featured: false,
+          links: [
+              { type: "Roadmap", url: "#" },
+              { type: "Stats", url: "#" },
+          ],
+      },
+      {
+          title: "Branding & Web Projects – UI/UX & identity builds",
+          description: "Portfolio sites, UI concepts, and internal tools forming the foundation of AlgoKnights’ brand.",
+          tags: ["Next.js", "TailwindCSS", "Figma"],
+          featured: false,
+          links: [
+              { type: "Designs", url: "#" },
+              { type: "Demo", url: "#" },
+          ],
+      },
   ];
 
   return (
